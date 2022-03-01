@@ -3,12 +3,12 @@ This repository presents the design of 1-bit full adder implemented in 28nm CMOS
 
 ## Table of contents
 - [Introduction](#introduction)
-- [Full-Adder](#full-adder)
-- [Reference-Circuit-Design](#reference-circuit-design)
-- [Reference-Waveform](#reference-waveform)
-- [Tools-Used](#tools-used)
-- [Schematics-Implementation-of-Full-Adder](#schematics-implementation-of-full-adder)
-- [Transient-Analysis](#transient-analysis)
+- [Full Adder](#full-adder)
+- [Reference Circuit Design](#reference-circuit-design)
+- [Reference Waveform](#reference-waveform)
+- [Tools Used](#tools-used)
+- [Schematics Implementation of Full Adder](#schematics-implementation-of-full-adder)
+- [Transient Analysis](#transient-analysis)
 - [Conclusion](#conclusion)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
@@ -91,14 +91,13 @@ Fig. 5 shows the implementation of 1-bit full adder circuit in the Synopsys Cust
 
 <p align="center">
   <img 
-    src=""
+    src="https://user-images.githubusercontent.com/100487608/156122503-1b1d903f-8338-4f56-98b6-071a618a7909.png"
   >
   <br/>Fig. 7. Transistor sizing of 1-bit full adder
 </p>
 
 <p align="center">
   
-
 | Transistors	| Length |	Width per finger |	Number of fingers |	Total width	| (W/L) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | M1, M17	| 0.03 µm	| 0.1 µm	| 1	| 0.1 µm	| 0.1 µm/0.03 µm |
@@ -109,7 +108,9 @@ Fig. 5 shows the implementation of 1-bit full adder circuit in the Synopsys Cust
 |M24, M25, M26, M27, M28	| 0.03 µm	| 0.1 µm	| 8	| 0.8 µm	| 0.8 µm/0.03 µm |
 
 Table 1. Width and length of each transistor
+
 </p>
+
 <p align="center">
   <img 
     src="https://user-images.githubusercontent.com/100487608/156110626-2f7694d5-f9b1-47e9-9fa6-ec4aa414795c.png"
@@ -118,7 +119,24 @@ Table 1. Width and length of each transistor
 </p>
 
 
-Fig. 8 shows the testbench circuit created for the simulation of 1-bit full adder. The VDD pin is connected to a DC voltage of 0.9V.  The input pins A, B and C are connected to vpulse whose parameters are given in table []. The output pins Sum and Carry_out are connected to capacitive load of 1pF. 
+Fig. 8 shows the testbench circuit created for the simulation of 1-bit full adder. The VDD pin is connected to a DC voltage of 0.9V.  The input pins A, B and C are connected to vpulse whose parameters are given in table 2. The output pins Sum and Carry_out are connected to capacitive load of 1pF. 
+
+<p align="center">
+  
+| Parameters	| Input A |	Input B |	Input C |
+| :---: | :---: | :---: | :---: | 
+| DC Voltage	| 0 V	| 0 V	| 0 V |
+| Voltage 1	| 0 V	| 0 V	| 0 V |
+| Voltage 2	| 0.9 V	| 0.9 V	| 0.9 V |
+| Delay time	| 0 s	| 0 s	| 0 s |
+| Rise time	| 200 ps	| 200 ps	| 200 ps |
+| Fall time	| 200 ps	| 200 ps	| 200 ps |
+| Pulse width	| 2 µs	| 1 µs	| 0.5 µs |
+| Period	| 4 µs	| 2 µs	| 1 µs |
+
+Table 2. Parameters of voltage inputs
+
+</p>
 
 ## Transient Analysis
 
