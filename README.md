@@ -9,6 +9,7 @@ This repository presents the design of 1-bit full adder implemented in 28nm CMOS
 - [Tools Used](#tools-used)
 - [Schematics Implementation of Full Adder](#schematics-implementation-of-full-adder)
 - [Transient Analysis](#transient-analysis)
+- [Netlist](#netlist)
 - [Conclusion](#conclusion)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
@@ -34,7 +35,9 @@ A gate-level realization of these two functions is shown in Fig. 2 from [3]. Ins
 
 <p align="center">
   <img 
-    src="https://user-images.githubusercontent.com/100487608/156110589-50051fab-167f-4a30-abca-e396cb9edde7.png"
+    src="https://user-images.githubusercontent.com/100487608/156186959-38a64265-614a-4460-bbf8-8d6c6c790197.png"
+       width="700"
+       height="300"
   >
   <br/>Fig. 2.	Gate-level schematic of the 1-bit full adder circuit
 </p>
@@ -63,11 +66,11 @@ The input and output voltage waveforms of the 1-bit CMOS full adder are shown Fi
 
 
 ## Tools Used
-- Synopsys Custom Compiler - The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. This tool was used to design the circuit on a transistor level.
+- Synopsys Custom Compiler - The Synopsys Custom Compiler™ design environment is a modern solution for full-custom analog, custom digital, and mixed-signal IC design. As the heart of the Synopsys Custom Design Platform, Custom Compiler provides design entry, simulation management and analysis, and custom layout editing features. This tool is used to design the transistor level circuit.
 
-- Synopsys PrimeWave - PrimeWave™ Design Environment is a comprehensive and flexible environment for simulation setup and analysis of analog, RF, mixed-signal design, custom-digital and memory designs within the Synopsys Custom Design Platform. This tool helped in various types of simulations of the above designed circuit.
+- Synopsys PrimeWave - PrimeWave™ Design Environment is a comprehensive and flexible environment for simulation setup and analysis of analog, RF, mixed-signal design, custom-digital and memory designs within the Synopsys Custom Design Platform. This tool helped in simulation of transient analysis of the design.
 
-- Synopsys 28nm PDK - The Synopsys 28nm Process Design Kit (PDK) was used in creation and simulation of the above designed circuit.
+- Synopsys 32/28nm PDK - The Synopsys 32/28nm Process Design Kit (PDK) is used for the implementation of the circuit.
 
 ## Schematics Implementation of Full Adder
 
@@ -75,7 +78,7 @@ The input and output voltage waveforms of the 1-bit CMOS full adder are shown Fi
   <img 
     src="https://user-images.githubusercontent.com/100487608/156110610-13dbfd5f-63d8-4a66-ba19-a83aa74bcd9a.png"
   >
-  <br/>Fig. 5. 1-bit full-adder schematic design
+  <br/>Fig. 5. 1-bit full-adder schematic design<br/>
 </p>
 
 
@@ -87,7 +90,7 @@ The input and output voltage waveforms of the 1-bit CMOS full adder are shown Fi
 </p>
 
 
-Fig. 5 shows the implementation of 1-bit full adder circuit in the Synopsys Custom Complier. The transistor level schematic consists of 28 MOSFET transistors out of which 28 are NMOS-4T transistors and the other 28 are PMOS-4T transistors. Three input pins have been used for the inputs A, B and C. VDD and GND pins are also input pins. Two output pins are used for the outputs Sum and Carry_out. Fig. 6 shows the symbol created for the 1-bit full adder from the schematic. Table1 shows the transistor sizing of each transistor used in the design.
+Fig. 5 shows the implementation of 1-bit full adder circuit in the Synopsys Custom Complier. The transistor level schematic consists of 28 MOSFET transistors out of which 28 are NMOS-4T transistors and the other 28 are PMOS-4T transistors. The transistors are taken from SAED_PDK_32_28 library. Three input pins have been used for the inputs A, B and C. VDD and GND pins are also input pins. Two output pins are used for the outputs Sum and Carry_out. Fig. 6 shows the symbol created for the 1-bit full adder from the schematic. Table 1 shows the transistor sizing of each transistor used in the design.
 
 <p align="center">
   <img 
@@ -96,7 +99,8 @@ Fig. 5 shows the implementation of 1-bit full adder circuit in the Synopsys Cust
   <br/>Fig. 7. Transistor sizing of 1-bit full adder
 </p>
 
-<p align="center">
+
+<div align="center">
   
 | Transistors	| Length |	Width per finger |	Number of fingers |	Total width	| (W/L) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -106,22 +110,25 @@ Fig. 5 shows the implementation of 1-bit full adder circuit in the Synopsys Cust
 |M13, M14, M15, M16, M19, M20, M21, M22, M23	| 0.03 µm	| 0.1 µm	| 4	| 0.4 µm	| 0.4 µm/0.03 µm |
 |M6, M7, M8	| 0.03 µm	| 0.1 µm	| 6	| 0.6 µm	| 0.6 µm/0.03 µm |
 |M24, M25, M26, M27, M28	| 0.03 µm	| 0.1 µm	| 8	| 0.8 µm	| 0.8 µm/0.03 µm |
+  
+</div>
 
+<p align="center">
 Table 1. Width and length of each transistor
-
 </p>
 
 <p align="center">
   <img 
     src="https://user-images.githubusercontent.com/100487608/156110626-2f7694d5-f9b1-47e9-9fa6-ec4aa414795c.png"
   >
-  <br/>Fig. 8. Testbench circuit of 1-bit full adder
+  <br/> Fig. 8. Testbench circuit of 1-bit full adder
 </p>
 
 
-Fig. 8 shows the testbench circuit created for the simulation of 1-bit full adder. The VDD pin is connected to a DC voltage of 0.9V.  The input pins A, B and C are connected to vpulse whose parameters are given in table 2. The output pins Sum and Carry_out are connected to capacitive load of 1pF. 
+Fig. 8 shows the testbench circuit created for the simulation of 1-bit full adder. The VDD pin is connected to a DC voltage of 0.9V taken from analog library.  The input pins A, B and C are connected to vpulse whose parameters are given in table 2. the rise and fall time are set to 200 ps and the voltage is set to 0.9V. The output pins Sum and Carry_out are connected to capacitive load of 1pF. 
 
-<p align="center">
+
+<div align="center">
   
 | Parameters	| Input A |	Input B |	Input C |
 | :---: | :---: | :---: | :---: | 
@@ -134,9 +141,12 @@ Fig. 8 shows the testbench circuit created for the simulation of 1-bit full adde
 | Pulse width	| 2 µs	| 1 µs	| 0.5 µs |
 | Period	| 4 µs	| 2 µs	| 1 µs |
 
-Table 2. Parameters of voltage inputs
+</div>
 
+<p align="center">
+Table 2. Parameters of voltage inputs
 </p>
+
 
 ## Transient Analysis
 
@@ -152,10 +162,92 @@ Transient analysis is performed for the simulation of 1-bit full adder using Pri
 
 <p align="center">
   <img 
-    src="https://user-images.githubusercontent.com/100487608/156110653-27f66b55-3536-4cc8-b898-35af83308021.png"
+    src="https://user-images.githubusercontent.com/100487608/156193700-06ac399b-132d-47ae-a431-f9024edd78aa.png"
   >
   <br/>Fig. 10. Resultant waveform of 1-bit full adder
 </p>
+
+## Netlist
+```
+*  Generated for: PrimeSim
+*  Design library name: muthulakshmi_lib
+*  Design cell name: mm_1b_FullAdder_tb
+*  Design view name: schematic
+.lib 'saed32nm.lib' TT
+
+*Custom Compiler Version S-2021.09
+*Tue Mar  1 14:01:35 2022
+
+.global gnd!
+********************************************************************************
+* Library          : muthulakshmi_lib
+* Cell             : mm_1b_FullAdder
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt mm_1b_fulladder a b c carry_out gnd_1 sum vdd
+xm98 net238 b vdd vdd p105 w=0.8u l=0.03u nf=8 m=1
+xm74 sum net218 vdd vdd p105 w=0.2u l=0.03u nf=2 m=1
+xm82 net174 b vdd vdd p105 w=0.8u l=0.03u nf=8 m=1
+xm73 carry_out net234 vdd vdd p105 w=0.2u l=0.03u nf=2 m=1
+xm81 net174 a vdd vdd p105 w=0.8u l=0.03u nf=8 m=1
+xm80 net234 c net174 vdd p105 w=0.8u l=0.03u nf=8 m=1
+xm97 net234 a net238 vdd p105 w=0.8u l=0.03u nf=8 m=1
+xm96 net226 c vdd vdd p105 w=0.4u l=0.03u nf=4 m=1
+xm95 net226 b vdd vdd p105 w=0.4u l=0.03u nf=4 m=1
+xm94 net226 a vdd vdd p105 w=0.4u l=0.03u nf=4 m=1
+xm93 net218 net234 net226 vdd p105 w=0.4u l=0.03u nf=4 m=1
+xm91 net210 b net214 vdd p105 w=0.6u l=0.03u nf=6 m=1
+xm90 net218 a net210 vdd p105 w=0.6u l=0.03u nf=6 m=1
+xm92 net214 c vdd vdd p105 w=0.6u l=0.03u nf=6 m=1
+xm85 net218 a net186 gnd_1 n105 w=0.3u l=0.03u nf=3 m=1
+xm84 net186 b net182 gnd_1 n105 w=0.3u l=0.03u nf=3 m=1
+xm83 net182 c gnd_1 gnd_1 n105 w=0.3u l=0.03u nf=3 m=1
+xm71 carry_out net234 gnd_1 gnd_1 n105 w=0.1u l=0.03u nf=1 m=1
+xm77 net156 a gnd_1 gnd_1 n105 w=0.4u l=0.03u nf=4 m=1
+xm76 net234 a net150 gnd_1 n105 w=0.4u l=0.03u nf=4 m=1
+xm72 sum net218 gnd_1 gnd_1 n105 w=0.1u l=0.03u nf=1 m=1
+xm79 net234 c net156 gnd_1 n105 w=0.4u l=0.03u nf=4 m=1
+xm75 net150 b gnd_1 gnd_1 n105 w=0.4u l=0.03u nf=4 m=1
+xm78 net156 b gnd_1 gnd_1 n105 w=0.4u l=0.03u nf=4 m=1
+xm89 net218 net234 net196 gnd_1 n105 w=0.2u l=0.03u nf=2 m=1
+xm88 net196 a gnd_1 gnd_1 n105 w=0.2u l=0.03u nf=2 m=1
+xm87 net196 b gnd_1 gnd_1 n105 w=0.2u l=0.03u nf=2 m=1
+xm86 net196 c gnd_1 gnd_1 n105 w=0.2u l=0.03u nf=2 m=1
+.ends mm_1b_fulladder
+
+********************************************************************************
+* Library          : muthulakshmi_lib
+* Cell             : mm_1b_FullAdder_tb
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+xi0 a b c carry_out gnd! sum net23 mm_1b_fulladder
+v1 net23 gnd! dc=0.9
+c3 sum gnd! c=1p
+c2 carry_out gnd! c=1p
+v6 a gnd! dc=0 pulse ( 0 0.9 0 200p 200p 2u 4u )
+v5 b gnd! dc=0 pulse ( 0 0.9 0 200p 200p 1u 2u )
+v4 c gnd! dc=0 pulse ( 0 0.9 0 200p 200p 0.5u 1u )
+
+
+.tran '0.5u' '4u' name=tran
+
+.option primesim_remove_probe_prefix = 0
+.probe v(*) i(*) level=1
+.probe tran v(a) v(b) v(c) v(carry_out) v(sum)
+
+.temp 25
+
+.option primesim_output=wdf
+
+.option parhier = LOCAL
+
+
+.end
+```
 
 
 ## Conclusion
